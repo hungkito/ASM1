@@ -1,0 +1,39 @@
+﻿<Page
+    x:Class="ASM1.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:data="using:ASM1.Models"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Left" Margin="0,20,0,0" Text="List Student" VerticalAlignment="Top" FontSize="36"/>
+        <StackPanel Margin="200,0,0,0">
+            <GridView ItemsSource="{x:Bind Students}" Margin="20,0,0,0" SelectionChanged="ListStudent_SelectonChanged">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="data:Student">
+                        <StackPanel HorizontalAlignment="Center" Margin="10">
+                            <Image Source="{x:Bind Image}" Width="100" Height="100"/>
+                            <StackPanel Orientation="Horizontal"
+                                Margin="0,10,0,0"
+                                HorizontalAlignment="Center">
+                                <TextBlock Text="Name:" Margin="0,0,5,0"/>
+                                <TextBlock Text="{x:Bind Name}"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Text="Age:" Margin="0,0,5,0"/>
+                                <TextBlock Text="{x:Bind Age}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </StackPanel>
+    </Grid>
+</Page>
